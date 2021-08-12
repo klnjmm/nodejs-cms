@@ -5,11 +5,16 @@ const path = require('path');
 
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/cms', { useNewUrlParser: true, useUnifiedTopology: true }).then(db => {
+mongoose.Promise = global.Promise;
+
+mongoose.connect('mongodb://localhost/cms', { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
     console.log('Connected to database');
 }).catch(err => console.log('Error : '+err));
 
+
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
 // Configuration du template engine
 app.engine('handlebars', handlebars({defaultLayout: 'home'}))

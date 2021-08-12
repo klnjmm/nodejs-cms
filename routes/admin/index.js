@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 router.all('/*', (request, response, next) => {
-    request.app.locals.layout = 'admin';
+    request.app.locals.layout = 'admin'
     next();
 });
 

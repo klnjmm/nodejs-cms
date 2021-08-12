@@ -9,9 +9,21 @@ router.all('/*', (request, response, next) => {
 
 router.get('/', (request, response) => {
 
-    Post.find().then(posts => {
+    Post.find().lean().then(posts => {
         response.render('admin/posts', {posts}); 
     });
 });
+
+router.get('/create', (request, response) => {
+    response.render('admin/posts-create');
+})
+
+router.post('/create', (request, response) => {
+    
+    request.body.allowComments = !!request.body.allowComments && request.body.allowComments === 'on';
+    const newPost = new Post(request.body);
+
+    newPost.save().then(() => response.redirect('/admin/posts'));
+})
 
 module.exports = router;

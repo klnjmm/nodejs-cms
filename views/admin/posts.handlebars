@@ -1,15 +1,20 @@
-<table>
+<table class="table table-bordered">
     <thead>
         <tr>
             <th>Title</th>
+            <th>Status</th>
+            <th>Allow comments</th>
             <th>Content</th>
+            
         </tr>
     </thead>
     <tbody>
 {{#each posts}}
   <tr>
-      <td>{{this.title}}</td>
-      <td>{{this.content}}</td>
+      <td>{{title}}</td>
+      <td>{{status}}</td>
+      <td>{{allowComments}}</td>
+      <td>{{content}}</td>
   </tr>
 {{/each}}
     </tbody>

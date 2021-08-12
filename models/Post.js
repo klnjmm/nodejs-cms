@@ -7,7 +7,16 @@ const PostSchema = new Schema({
         required: true
     },
     "content": {
-        type: String
+        type: String,
+        required: true,
+    },
+    "status": {
+        type: String,
+        default: "public",
+    },
+    "allowComments": {
+        type: Boolean,
+        required: true,
     }
 });
 
